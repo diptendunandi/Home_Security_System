@@ -1,127 +1,90 @@
-# Home Security System
+Security System GUI - SFML
 
-This is a simple console-based Security System program implemented in C++. The program allows users to register, log in, and change their passwords, storing user data in a text file.
+This is a simple Security System implemented with a graphical user interface (GUI) using SFML (Simple and Fast Multimedia Library). The system allows users to register, log in, and change passwords.
+Features:
 
-## Features
+    Register: Allows users to create a new account with a username, password, age, and address.
+    Login: Enables users to log into the system using their registered username and password.
+    Change Password: Lets users change their password after logging in.
+    End Program: Closes the program.
 
-1. **Register**: Create a new account by providing a username, password, age, and address.
-2. **Login**: Access the system by verifying credentials stored in the file.
-3. **Change Password**: Update the password for an existing account after verifying the old password.
-4. **Exit**: Safely terminate the program.
+Prerequisites:
 
-## Prerequisites
+    C++17 or later
+    SFML 2.5 (System, Window, and Graphics components)
+    A Linux-based OS with access to DejaVuSans font or any alternative font.
 
-- A C++ compiler (e.g., g++, MSVC, etc.).
-- Basic understanding of C++ and file handling.
+Installation Instructions
+1. Install SFML:
 
-## Files Used
+If SFML is not already installed on your system, you can install it by following the instructions on the SFML website.
 
-- `File.txt`: Stores user credentials (username and password) in plaintext format.
+    For Ubuntu/Debian-based systems:
 
-## How to Run
+sudo apt-get install libsfml-dev
 
-1. Copy the code into a file named `security_system.cpp`.
-2. Compile the program using a C++ compiler:
-   ```bash
-   g++ -o security_system security_system.cpp
-   ```
-3. Run the compiled program:
-   ```bash
-   ./security_system
-   ```
+For Fedora:
 
-## Program Workflow
+sudo dnf install sfml-devel
 
-1. **Main Menu**:
-   - Displays options to register, log in, change password, or exit the program.
-2. **Register**:
-   - Prompts the user to enter a username, password, age, and address.
-   - Saves the username and password to `File.txt`.
-   - Displays a success message.
-3. **Login**:
-   - Prompts the user to enter a username and password.
-   - Validates credentials against the data in `File.txt`.
-   - If successful, displays the user's details.
-   - If unsuccessful, provides options to retry or change the password.
-4. **Change Password**:
-   - Prompts the user to enter their old password.
-   - If the old password matches, allows the user to set a new password.
-   - Updates the password in `File.txt`.
-5. **Exit**:
-   - Ends the program with a thank-you message.
+For macOS (using Homebrew):
 
-## Code Structure
+    brew install sfml
 
-### Libraries Used
+2. Clone the Repository:
 
-- `#include <iostream>`: For input/output operations.
-- `#include <fstream>`: For file handling.
-- `#include <sstream>`: For processing strings.
-- `#include <string>`: For working with string variables.
+Clone the project repository to your local machine:
 
-### Core Functions
+git clone <repository-url>
+cd SecuritySystemGUI
 
-- **Registration**:
-  - Captures user data and saves it to a file.
-  - Ensures the file opens successfully before writing.
+3. Build the Project:
 
-- **Login**:
-  - Reads credentials from the file and validates them against user input.
+    Create the build directory:
 
-- **Change Password**:
-  - Validates the old password.
-  - Ensures the new password matches the confirmation.
-  - Updates the file with the new password.
+mkdir build
+cd build
 
-- **Main Menu**:
-  - Displays available options and processes user input.
+Run CMake to configure the project:
 
-## Example Usage
+cmake ..
 
-### Registration
-```
-Enter your choice:- 1
-Please enter username:- JohnDoe
-Please enter the password:- password123
-Please enter your age:- 25
-Please enter your address:- 123 Main St
-Registration successful
-```
+Compile the project:
 
-### Login
-```
-Enter your choice:- 2
-Please enter the username:- JohnDoe
-Please enter the password:- password123
----Log in successful----
-Details:
-Username: JohnDoe
-Password: password123
-Age: 25
-Address: 123 Main St
-```
+    make
 
-### Change Password
-```
-Enter your choice:- 3
-Enter the old password: password123
-Enter your new password: newpassword456
-Enter your password again: newpassword456
-Password change successful
-```
+4. Run the Application:
 
-## Notes
+Once the project is built successfully, you can run the program using the following command:
 
-- Ensure the `File.txt` file is writable in the program's directory.
-- The program does not currently encrypt or hash passwords, so avoid using sensitive data.
+./SecuritySystemGUI
 
-## Future Improvements
+5. Font Setup:
 
-1. Encrypt stored passwords for better security.
-2. Add functionality to handle multiple user accounts.
-3. Implement better error handling and input validation.
-4. Enhance the user interface for better usability.
+Ensure the font DejaVuSans-Bold.ttf is located at /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf on your system. If not, you can modify the path in the code to a font available on your machine.
+Project Structure:
 
----
+SecuritySystemGUI/
+│
+├── CMakeLists.txt           # CMake build configuration
+├── main.cpp                 # Main program file containing logic for the security system
+├── README.md                # Project documentation
+└── File.txt                 # A simple text file used for storing user credentials (username, password, etc.)
 
-Developed with 💻 and 🧠 by Diptendu Nandi.
+File Format (File.txt):
+
+This file is used to store user credentials in the following format:
+
+<username>
+<password>
+<age>
+<address>
+
+Notes:
+
+    This project demonstrates basic SFML GUI components (e.g., buttons, text rendering) and simple file handling in C++.
+    The current password handling is stored in plain text in File.txt. This is for demonstration purposes, and it's not recommended for production use. You should use encryption or hashing mechanisms for secure password storage in real-world applications.
+
+License:
+
+This project is open source and released under the MIT License.
